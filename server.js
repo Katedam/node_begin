@@ -13,17 +13,30 @@ var http = require('http');
 
 //asynchronous 
 //request and response are objects and they have methods that handle the details of the HTTP request and to respond
-function onRequest(request, response) {
-    console.log("Request received. ");
+// function onRequest(request, response) {
+//     console.log("Request received. ");
     // Whenever a request is received, it uses the response.writeHead()
     // function to send an HTTP status 200 and content-type in the HTTP response header, and the
     // response.write() function to send the text “Hello World” in the HTTP response body
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.write('Hello World');
-    response.end();
+//     response.writeHead(200, {'Content-Type': 'text/plain'});
+//     response.write('Hello World');
+//     response.end();
+// }
+
+// http.createServer(onRequest).listen(8888);
+
+// console.log('listening on port 8888');
+
+//creating and exporting modules
+function start() {
+    function onRequest(request, response) {
+        console.log("Request received.");
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("Hello World");
+        response.end();
+    }
+    http.createServer(onRequest).listen(8888);
+    console.log("listening on 8888");
 }
 
-http.createServer(onRequest).listen(8888);
-
-console.log('listening on port 8888');
-
+exports.start = start;
