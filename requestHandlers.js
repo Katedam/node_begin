@@ -1,12 +1,45 @@
-function start() {
+// var exec = require("child_process").exec;
+var querystring = require("querystring"),
+    fs = require('fs');
+
+function start(response) {
     console.log(`Request handler 'start' was called`);
-    return 'Hello Start';
+
+    var body = '<html>'+
+        '<head>'+
+        '<meta http-equiv="Content-Type" content="text/html/ '+
+        'charset=UTF-8" />'+
+        '</head>'+
+        '<body>'+
+        '<form action="/upload" method="post">'+
+        '<textarea name="text" rows="20" cols="60"></textarea>'+
+        '<input type="submit" value="Submit text" />'+
+        '</form>'+
+        '</body>'+
+        '</html>';
+
+        response.writeHead(200, {"Content-Type": "text/html"});
+        response.write(body);
+        response.end();
 }
 
-function upload() {
+// ADD postData as a param to upload to page
+function upload(response, postData) {
     console.log(`Request handler 'upload' was called`);
-    return 'Hello Upload';
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    //WRITE postData to page
+    response.write("You've sent: " + querystring.parse(postData).text);
+    response.end();
 }
+
+
+function show(response) {
+    console.log("Request handler 'show' was called.");
+    response.writeHead(200, {"Content-Type": "image/png"});
+    fs.createReadStream("/tmp/test.png").pipe(response);
+}
+
 
 exports.start = start;
 exports.upload = upload;
+exports.show = show;
