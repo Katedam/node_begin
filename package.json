@@ -1,0 +1,27 @@
+{
+  "name": "node_begin",
+  "version": "1.0.0",
+  "description": "This is my code as a work through The Node Beginner Book",
+  "main": "index.js",
+  "dependencies": {
+    "formidable": "^1.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Katedam/node_begin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Katedam/node_begin/issues"
+  },
+  "homepage": "https://github.com/Katedam/node_begin#readme"
+}
