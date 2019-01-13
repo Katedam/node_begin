@@ -1,7 +1,5 @@
 /* eslint-disable no-console */
-// var exec = require("child_process").exec;
-var querystring = require('querystring'),
-  fs = require('fs'),
+const fs = require('fs'),
   formidable = require('formidable');
 
 function start(response) {
